@@ -21,12 +21,13 @@ class ODSParser():
 		pass
 
 with ODSParser("extract.ods") as ods:
-	for child in ods.root:
-		if "body" in child.tag:
-			spreadsheet = child[0][1]
-			print(spreadsheet.attrib)
-			for subchild in spreadsheet:
-				print(subchild.tag)
+	body = ods.root[3]
+	spreadsheet = body[0]
+	tables = [t for t in spreadsheet if "}table" in t.tag]
+	print(tables[0].attrib['{urn:oasis:names:tc:opendocument:xmlns:table:1.0}name'])
+	for table in tables:
+		for column in table:
+			print(column.tag, column.attrib)
 	pass
 
 """
