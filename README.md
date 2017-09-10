@@ -3,8 +3,7 @@ A python library that parses ODS files, and return the spreadsheet in a pandas d
 
 # How to use :
 
-```
-python
+```python
 from ODSParser import ODSParser
 
 with ODSParser("my_spreadsheet.ods") as ods_file:
